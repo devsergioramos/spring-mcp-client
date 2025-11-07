@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: mcp-client-demo
+  ai:
+    openai:
+      base-url: https://api.openai.com
+      api-key: ${API_KEY:default}
+      chat:
+        completions-path: /v1/chat/completions
+        options:
+          model: gpt-4.1
+    mcp:
+      client:
+        sse:
+          connections:
+            mcp-server:
+              url: http://localhost:8082
