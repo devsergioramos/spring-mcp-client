@@ -8,9 +8,10 @@ spring:
       chat:
         completions-path: /v1/chat/completions
         options:
-          model: gpt-4.1
+          model: gpt-4.1-mini
     mcp:
       client:
+        request-timeout: 180s
         sse:
           connections:
             mcp-server:
