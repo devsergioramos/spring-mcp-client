@@ -1,18 +1,15 @@
 package com.mcpclient.demo.agent
 
-import io.modelcontextprotocol.client.McpSyncClient
 import org.springframework.ai.chat.client.ChatClient
-import org.springframework.ai.mcp.SyncMcpToolCallbackProvider
+import org.springframework.ai.tool.ToolCallbackProvider
 import org.springframework.stereotype.Component
 
 @Component
 class SingleAgent(
     chatClientBuilder: ChatClient.Builder,
-    mcpSyncClient: List<McpSyncClient>
+    tools: ToolCallbackProvider
 ) {
-    private val mcpToolProvider = SyncMcpToolCallbackProvider(mcpSyncClient)
-
-    private val chatClient: ChatClient = chatClientBuilder.defaultToolCallbacks(mcpToolProvider).build()
+    private val chatClient: ChatClient = chatClientBuilder.defaultToolCallbacks(tools).build()
 
     fun process(
         input: String
